@@ -1,13 +1,13 @@
 <template>
   <div class="pokemon-main">
-    <!-- <Pokemon-List/> -->Main
+    <Pokemon-List/>
   </div>
 </template>
 
 <script>
-// import PokemonList from './PokemonList.vue';
+import PokemonList from './PokemonList.vue';
 export default {
-  // components: { PokemonList },
+  components: { PokemonList },
   name: "PokemonMain"
 };
 </script>

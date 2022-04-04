@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils';
 
 describe('HomeView', () => {
   it('HomeView component should exist', () => {
-    const wrapper = shallowMount(HomeView);
-    expect(wrapper).toBeTruthy();
+    shallowMount(HomeView);
+    expect(HomeView.name).toBe('HomeView');
   });
 });
