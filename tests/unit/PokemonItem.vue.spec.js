@@ -27,6 +27,6 @@ describe('PokemonItem', () => {
   it('when clicked should emit pokemonEvent then emit an empty array', () => {
     const eventClick = wrapper.find('.cards').trigger('click')
     expect(eventClick).not.toBeUndefined();
-    expect(wrapper.emitted('pokemonEvent')).not.toBeUndefined()
+    expect(wrapper.emitted('pokemonEvent')).toHaveLength(1)
   });
 });
