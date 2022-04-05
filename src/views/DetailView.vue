@@ -46,7 +46,7 @@ export default {
     await this.$store.dispatch("getPokemonList");
     setTimeout(() => {
       this.$store.commit("ADD_TO_DETAIL", this.$route.params.id);
-    }, 3000);
+    }, 1000);
   },
 };
 </script>
