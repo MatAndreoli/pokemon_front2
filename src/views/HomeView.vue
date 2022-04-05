@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <div class="content">
-      <img
-        src="/img/png-clipart-pokemon-logo-pokemon-logo-thumbnail.png"
-      />
+      <img src="@/assets/pokemon-logo.png" />
       <h1>Pokedex VueJS</h1>
       <h2><p>Choose the pokemon to see its details:</p></h2>
       <Pokemon-Main />
@@ -23,19 +21,26 @@ export default {
 .home {
   .content {
     display: grid;
-    grid-template-rows: 100px 50px 50px;
     grid-template-areas: "logo" "title" "text";
+
     margin: 30px auto;
+
     h1,
     h2 {
       text-align: center;
+      grid-area: text;
+      margin-bottom: 0.5%;
     }
     h1 {
       font-size: 40px;
+      grid-area: title;
+      margin-top: -4%;
     }
     img {
-      width: 200px;
-      height: 100px;
+      margin-top: -6%;
+      width: 300px;
+      height: 300px;
+
       justify-self: center;
       grid-area: logo;
     }
