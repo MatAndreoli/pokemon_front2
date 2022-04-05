@@ -1,24 +1,37 @@
 <template>
   <div class="card" v-if="getDetail">
-    <h2>{{ camelCase(getDetail.name) }}</h2>
-    <div>
+    <div class="pokemon_img">
       <img :src="getDetail.front_default" alt="" />
     </div>
-    <div>
-      <h3>Abilities</h3>
-      <ul>
-        <li v-for="ability of getDetail.abilities" :key="ability">
-          {{ camelCase(ability) }}
-        </li>
-      </ul>
+    <h1>{{ camelCase(getDetail.name) }}</h1>
+    <div class="details">
+      <div class="detail">
+        <h3 class="title">Pokemon Types/Tipo</h3>
+        <ul>
+          <li
+            :class="liColorPicker(type)"
+            v-for="type of getDetail.types"
+            :key="type"
+          >
+            {{ camelCase(type) }}
+          </li>
+        </ul>
+      </div>
+      <div class="detail">
+        <h3 class="title">Abilities/Habilidade</h3>
+        <ul>
+          <li
+            class="ability"
+            v-for="ability of getDetail.abilities"
+            :key="ability"
+          >
+            {{ camelCase(ability) }}
+          </li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h3>Types</h3>
-      <ul>
-        <li v-for="type of getDetail.types" :key="type">
-          {{ camelCase(type) }}
-        </li>
-      </ul>
+    <div class="buttonClose">
+      <button @click="goToHome" id="close" class="close">Close/Fechar</button>
     </div>
   </div>
 </template>
@@ -38,6 +51,28 @@ export default {
         .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
         .join("");
     },
+    goToHome() {
+      this.$router.push({ name: "home" });
+    },
+    liColorPicker(type) {
+      console.log("🚀 ==> liColorPicker ==> type", type);
+      switch (type) {
+        case "grass":
+          return "grass";
+        case "poison":
+          return "poison";
+        case "fire":
+          return "fire";
+        case "water":
+          return "water";
+        case "flying":
+          return "flying";
+        case "bug":
+          return "bug";
+        case "normal":
+          return "normal";
+      }
+    },
   },
   async created() {
     if (this.getList.length > 0) {
@@ -46,25 +81,21 @@ export default {
     await this.$store.dispatch("getPokemonList");
     setTimeout(() => {
       this.$store.commit("ADD_TO_DETAIL", this.$route.params.id);
-    }, 1000);
+    }, 2000);
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
-  height: 20em;
   width: 30%;
+  margin-left: 35%;
+  margin-top: 5%;
+  padding: 4px;
 
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 30%;
-  grid-template-rows: 10% 28% 20% 20%;
+  grid-template-columns: 100%;
   justify-content: center;
-
-  margin-left: 35%;
-  margin-top: 2.1%;
-  padding: 4px;
 
   text-align: center;
   background-color: #ddd;
@@ -72,20 +103,114 @@ export default {
 
   border-radius: 5px;
 
-  div {
-    height: 100%;
+  .details {
+    margin-top: 4%;
+    margin-left: 15%;
+    width: 70%;
+
+    .detail {
+      margin-top: 3%;
+    }
   }
 
-  h3 {
-    margin-bottom: 2%;
+  .pokemon_img {
+    margin-top: -70px;
+    padding-top: 14px;
+    margin-left: 38%;
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background-color: #fbcb37;
+    box-shadow: 1px 7px 16px grey;
   }
+
+  .title {
+    text-align: start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.253);
+  }
+
+  h1 {
+    margin-top: 3%;
+  }
+
   ul {
     list-style: none;
+    display: flex;
+
+    .ability {
+      padding: 4px 14px;
+
+      background-color: #ddd;
+      border: 3px solid green;
+      color: green;
+    }
+  }
+
+  li {
+    margin-top: 5px;
+    margin-left: 7px;
+    padding: 8px 10px;
+
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    border-radius: 24px;
+
+    &.grass {
+      background-color: green;
+    }
+    &.poison {
+      background-color: #f0f;
+    }
+    &.fire {
+      background-color: rgb(255, 60, 0);
+    }
+    &.water {
+      background-color: rgb(0, 132, 255);
+    }
+    &.bug {
+      background-color: rgb(65, 0, 82);
+    }
+    &.flying {
+      background-color: rgb(39, 163, 157);
+    }
+    &.normal {
+      background-color: rgb(65, 175, 107);
+    }
   }
 
   img {
     width: 100px;
     height: 100px;
+  }
+
+  .buttonClose {
+    height: 100px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    .close {
+      align-self: center;
+      width: 30%;
+      padding: 6px 10px;
+
+      background-color: #e2978c;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+
+      border: none;
+      border-radius: 7px;
+
+      cursor: pointer;
+    }
   }
 }
 </style>

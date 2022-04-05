@@ -11,7 +11,7 @@
 body {
   top: 0;
   bottom: 0;
-  min-height: 95.8vh;
+  min-height: 90vh;
   background: linear-gradient(#f00, rgb(250, 133, 0), rgb(255, 160, 50)) no-repeat;
   background-size: cover;
   color: #fff;
