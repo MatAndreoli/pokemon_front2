@@ -11,37 +11,33 @@ const factory = (store, localVue) =>
     localVue,
   });
 
-const gettersWithData = {
-  getList: () => [
-    {
-      abilities: ['overgrow', 'chlorophyll'],
-      front_default:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-      id: 1,
-      name: 'bulbasaur',
-      types: ['grass', 'poison'],
-    },
-    {
-      abilities: ['overgrow', 'chlorophyll'],
-      front_default:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
-      id: 2,
-      name: 'ivysaur',
-      types: ['grass', 'poison'],
-    },
-  ],
-  getDetail: jest.fn(),
-};
-
-const gettersEmpty = {
-  getList: () => [],
-  getDetail: jest.fn(),
-};
+const gettersWithData = () => [
+  {
+    abilities: ['overgrow', 'chlorophyll'],
+    front_default:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+    id: 1,
+    name: 'bulbasaur',
+    types: ['grass', 'poison'],
+  },
+  {
+    abilities: ['overgrow', 'chlorophyll'],
+    front_default:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
+    id: 2,
+    name: 'ivysaur',
+    types: ['grass', 'poison'],
+  },
+];
+const gettersEmpty = () => [];
 
 const actions = { getPokemonList: jest.fn() };
 const store = (option) =>
   new Vuex.Store({
-    getters: option ? gettersEmpty : gettersWithData,
+    getters: {
+      getList: option ? gettersEmpty : gettersWithData,
+      getDetail: jest.fn(),
+    },
     actions,
   });
 
@@ -72,7 +68,6 @@ describe('DetailView', () => {
       it('then should call $store.dispatch', () => {
         expect(actions.getPokemonList).toHaveBeenCalled();
       });
-
     });
   });
 });
