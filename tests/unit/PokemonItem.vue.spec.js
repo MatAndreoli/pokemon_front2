@@ -28,7 +28,7 @@ describe('PokemonItem', () => {
       wrapper.find('.cards').trigger('click');
     });
 
-    it('then should emit pokemonEvent with a empty value', () => {
+    it('then should emit pokemonEvent with an empty value', () => {
       expect(wrapper.emitted('pokemonEvent')).toEqual([[]]);
     });
   });
