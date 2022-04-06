@@ -1,7 +1,7 @@
 import PokemonMain from '../../src/components/PokemonMain.vue';
 
 describe('PokemonMain', () => {
-  it('PokemonMain component should exist', () => {
+  it('should validate name', () => {
     expect(PokemonMain.name).toBe('PokemonMain');
   });
 });

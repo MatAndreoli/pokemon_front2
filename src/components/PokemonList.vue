@@ -13,6 +13,7 @@
 <script>
 import PokemonItem from "./PokemonItem.vue";
 import { mapGetters, mapActions } from "vuex";
+import pokemon from '../gateways/pokemon_api'
 
 export default {
   components: { PokemonItem },
@@ -31,7 +32,8 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    await this.$store.dispatch("setPokemonList");
+    const list = await pokemon.getPokemonList();
+    await this.setPokemonList(list);
   },
 };
 </script>

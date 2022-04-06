@@ -1,6 +1,11 @@
 import PokemonList from '../../src/components/PokemonList.vue';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import pokemon from '@/gateways/pokemon_api';
+
+jest.mock('@/gateways/pokemon_api', () => ({
+  getPokemonList: jest.fn(),
+}));
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -58,11 +63,11 @@ describe('PokemonList', () => {
       wrapper.vm.goToDetail(1);
     });
 
-    it('then should call setDetail', () => {
-      expect(actions.setDetail).toHaveBeenCalled();
+    it('then should call setDetail with the expected param', () => {
+      expect(actions.setDetail.mock.calls[0][1]).toEqual(1);
     });
 
-    it('then should call $router.push', () => {
+    it('then should call $router.push with the expected param', () => {
       expect(wrapper.vm.$router.push).toHaveBeenCalledWith({
         name: 'detailView',
         params: { id: 1 },
@@ -71,23 +76,35 @@ describe('PokemonList', () => {
   });
 
   describe('when method created is called', () => {
+    beforeEach(() => {
+      pokemon.getPokemonList = jest.fn(() => []);
+    });
+
     describe('and getList has data', () => {
       beforeEach(() => {
         wrapper = factory(store, localVue);
       });
 
+      it('then should not call getPokemonList', () => {
+        expect(pokemon.getPokemonList).not.toHaveBeenCalled();
+      });
+
       it('then should not call setPokemonList', () => {
         expect(actions.setPokemonList).not.toHaveBeenCalled();
-      });
+      }); 
     });
 
     describe('and getList is empty', () => {
-      beforeEach(() => {
+      beforeEach(async () => {
         wrapper = factory(store(true), localVue);
       });
 
-      it('then should call $store.dispatch', () => {
-        expect(actions.setPokemonList).toHaveBeenCalled();
+      it('then should call getPokemonList', async () => {
+        expect(pokemon.getPokemonList).toHaveBeenCalled();
+      });
+
+      it('then should call setPokemonList with the expected param', async () => {
+        expect(actions.setPokemonList.mock.calls[0][1]).toEqual([]);
       });
     });
   });

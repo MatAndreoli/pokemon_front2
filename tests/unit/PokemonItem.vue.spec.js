@@ -11,9 +11,9 @@ const factory = (propsData) =>
 describe('PokemonItem', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = factory({img: 'url', name: 'matheus'});
+    wrapper = factory({ img: 'url', name: 'matheus' });
   });
-  
+
   it('should validate name', () => {
     expect(PokemonItem.name).toEqual('PokemonItem');
   });
@@ -23,8 +23,13 @@ describe('PokemonItem', () => {
     expect(h2Text).toContain('Matheus');
   });
 
-  it('when clicked should emit pokemonEvent then emit an empty array', () => {
-    wrapper.find('.cards').trigger('click')
-    expect(wrapper.emitted('pokemonEvent')).toHaveLength(1)
+  describe('when the card is clicked', () => {
+    beforeEach(() => {
+      wrapper.find('.cards').trigger('click');
+    });
+
+    it('then should emit pokemonEvent with a empty value', () => {
+      expect(wrapper.emitted('pokemonEvent')).toEqual([[]]);
+    });
   });
 });

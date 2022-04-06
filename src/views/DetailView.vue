@@ -38,6 +38,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import pokemon from '../gateways/pokemon_api'
 
 export default {
   name: "DetailView",
@@ -78,9 +79,10 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    await this.$store.dispatch("setPokemonList");
-    setTimeout(() => {
-      this.setDetail(this.$route.params.id);
+    const list = await pokemon.getPokemonList();
+    await this.setPokemonList(list);
+    setTimeout(async () => {
+      await this.setDetail(this.$route.params.id);
     }, 2000);
   },
 };

@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import http from '../http/index';
 
 Vue.use(Vuex);
 
@@ -27,10 +26,8 @@ const mutations = {
 };
 
 const actions = {
-  async setPokemonList({ commit }) {
-    http.get(`http://localhost:8080/pokemons/`).then((res) => {
-      commit('ADD_TO_LIST', res.data);
-    });
+  async setPokemonList({ commit }, payload) {
+    commit('ADD_TO_LIST', payload);
   },
   async setDetail({ commit }, payload) {
     commit('ADD_TO_DETAIL', payload);
