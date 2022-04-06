@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "DetailView",
@@ -45,6 +45,7 @@ export default {
     ...mapGetters(["getDetail", "getList"]),
   },
   methods: {
+    ...mapActions(['setPokemonList', 'setDetail']),
     camelCase(str) {
       return str
         .split(" ")
@@ -55,7 +56,6 @@ export default {
       this.$router.push({ name: "home" });
     },
     liColorPicker(type) {
-      console.log("🚀 ==> liColorPicker ==> type", type);
       switch (type) {
         case "grass":
           return "grass";
@@ -78,9 +78,9 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    await this.$store.dispatch("getPokemonList");
+    await this.$store.dispatch("setPokemonList");
     setTimeout(() => {
-      this.$store.commit("ADD_TO_DETAIL", this.$route.params.id);
+      this.setDetail(this.$route.params.id);
     }, 2000);
   },
 };

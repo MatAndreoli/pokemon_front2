@@ -12,7 +12,7 @@
 
 <script>
 import PokemonItem from "./PokemonItem.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: { PokemonItem },
@@ -21,8 +21,9 @@ export default {
     ...mapGetters(["getList"]),
   },
   methods: {
+    ...mapActions(['setPokemonList', 'setDetail']),
     goToDetail(id) {
-      this.$store.commit("ADD_TO_DETAIL", id);
+      this.setDetail(id);
       this.$router.push({ name: "detailView", params: { id } });
     },
   },
@@ -30,7 +31,7 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    await this.$store.dispatch("getPokemonList");
+    await this.$store.dispatch("setPokemonList");
   },
 };
 </script>

@@ -31,7 +31,8 @@ const gettersWithData = () => [
 ];
 const gettersEmpty = () => [];
 
-const actions = { getPokemonList: jest.fn() };
+const actions = { setPokemonList: jest.fn(), setDetail: jest.fn() };
+
 const store = (option) =>
   new Vuex.Store({
     getters: {
@@ -43,30 +44,25 @@ const store = (option) =>
 
 describe('DetailView', () => {
   let wrapper;
+  
   describe('when method created is called', () => {
     describe('and getList has data', () => {
       beforeEach(() => {
         wrapper = factory(store, localVue);
-        wrapper.vm.$store.commit = jest.fn();
       });
 
-      it('then should not call $store.dispatch', () => {
-        expect(actions.getPokemonList).not.toHaveBeenCalled();
-      });
-
-      it('then should not call $store.commit', () => {
-        expect(wrapper.vm.$store.commit).not.toHaveBeenCalled();
+      it('then should not call setPokemonList', () => {
+        expect(actions.setPokemonList).not.toHaveBeenCalled();
       });
     });
 
     describe('and getList has no data', () => {
       beforeEach(() => {
         wrapper = factory(store(true), localVue);
-        wrapper.vm.$store.commit = jest.fn();
       });
 
-      it('then should call $store.dispatch', () => {
-        expect(actions.getPokemonList).toHaveBeenCalled();
+      it('then should call setPokemonList', () => {
+        expect(actions.setPokemonList).toHaveBeenCalled();
       });
     });
   });
