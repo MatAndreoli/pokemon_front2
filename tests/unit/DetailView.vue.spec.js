@@ -76,7 +76,7 @@ describe('DetailView', () => {
     });
 
     describe('and getList has no data', () => {
-      beforeEach(() => {
+      beforeEach(async () => {
         wrapper = factory(store(true), localVue);
       });
 

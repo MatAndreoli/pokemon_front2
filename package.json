@@ -66,6 +66,8 @@
     "not dead"
   ],
   "jest": {
+    "verbose": true,
+    "collectCoverage": true,
     "preset": "@vue/cli-plugin-unit-jest"
   }
 }
