@@ -68,12 +68,12 @@ SF:src/views/DetailView.vue
 FN:1,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:4,(anonymous_0)
-DA:1,15
+FNDA:7,(anonymous_0)
+DA:1,24
 LF:1
 LH:1
 BRDA:1,0,0,0
-BRDA:1,0,1,4
+BRDA:1,0,1,7
 BRF:2
 BRH:1
 end_of_record

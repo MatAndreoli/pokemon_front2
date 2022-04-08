@@ -64,6 +64,8 @@ describe('DetailView', () => {
     describe('and getList has data', () => {
       beforeEach(() => {
         wrapper = factory(store, localVue);
+        jest.useFakeTimers();
+        jest.spyOn(global, 'setTimeout');
       });
 
       it('then should not call getPokemonList', () => {
@@ -72,6 +74,10 @@ describe('DetailView', () => {
 
       it('then should not call setPokemonList', () => {
         expect(actions.setPokemonList).not.toHaveBeenCalled();
+      });
+
+      it('then should not call setTimeout', async () => {
+        expect(setTimeout).not.toHaveBeenCalled();
       });
     });
 
@@ -85,7 +91,12 @@ describe('DetailView', () => {
       });
 
       it('then should call setPokemonList with expected param', () => {
+        expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 2000);
         expect(actions.setPokemonList.mock.calls[0][1]).toEqual([]);
+      });
+
+      it('then should call setTimeout with body and time', async () => {
+        expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 2000);
       });
     });
   });
