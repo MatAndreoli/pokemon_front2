@@ -3,8 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
+  "scripts": {
+    "start": "cd src/ && nodemon app.js",
+    "build:client": "cd ../client/ && npm run build"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "mustache-express": "^1.3.2",
+    "nodemon": "^2.0.15"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  }
 }
