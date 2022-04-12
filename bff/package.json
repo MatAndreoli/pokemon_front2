@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:start":"npm run build:client && npm run start",
     "start": "cd src/ && nodemon app.js",
-    "build:client": "cd ../client/ && npm run build"
+    "build:client": "cd ../client/ && npm run build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
