@@ -11,6 +11,9 @@ app.set('view engine', 'mustache');
 app.set('views', '../views');
 
 const indexRoute = require('./routes/index')
+const pokemonRoute = require('./routes/pokemon')
+
 app.use('/', indexRoute)
+app.use('/pokemons', pokemonRoute)
 
 app.listen(3000);
