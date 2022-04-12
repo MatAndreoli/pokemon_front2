@@ -1,4 +1,4 @@
-const index = require('./index-controller');
+const indexController = require('./index-controller');
 
 jest.mock('../assets.json', () => ({
   app: {
@@ -18,7 +18,7 @@ describe('index-controller', () => {
     'when method GET from the controller is called ' +
       'should call method res.render',
     async () => {
-      index.get(req, res);
+      indexController.get(req, res);
       expect(res.render).toHaveBeenCalled();
     }
   );
