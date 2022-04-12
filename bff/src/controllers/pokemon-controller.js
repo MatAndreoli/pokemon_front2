@@ -1,3 +1,6 @@
-exports.get = async (req, res, next) => {
-  res.send("Hey")
+const pokemon = require('../gateways/pokemon_api');
+
+exports.get = async (req, res) => {
+  const data = await pokemon.getPokemonList('http://localhost:8080/pokemons/');
+  res.send(data);
 };
