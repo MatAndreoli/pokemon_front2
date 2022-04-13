@@ -1,4 +1,4 @@
-const assets = require('../assets.json');
+const assets = require('../../../assets.json');
 
 exports.get = (req, res) => {
   const css = [];

@@ -1,4 +1,4 @@
-const http = require('../http/index');
+const http = require('./axios-export');
 
 const pokemon = {
   getPokemonList: async () => {

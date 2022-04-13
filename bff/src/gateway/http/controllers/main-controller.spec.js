@@ -1,6 +1,6 @@
-const indexController = require('./index-controller');
+const indexController = require('./main-controller');
 
-jest.mock('../assets.json', () => ({
+jest.mock('../../../assets.json', () => ({
   app: {
     css: 'apple',
     js: 'banana',

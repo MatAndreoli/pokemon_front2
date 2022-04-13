@@ -11,8 +11,8 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', '../views');
 
-const indexRoute = require('./routes/index');
-const pokemonRoute = require('./routes/pokemon');
+const indexRoute = require('./gateway/http/routes/main-router');
+const pokemonRoute = require('./gateway/http/routes/pokemon-router');
 
 app.use('/', indexRoute);
 app.use('/pokemons', cors(), pokemonRoute);

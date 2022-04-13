@@ -1,7 +1,7 @@
 const pokemon = require('./pokemon_api');
-const http = require('../http/index');
+const http = require('./axios-export');
 
-jest.mock('../http/index', () => ({
+jest.mock('./axios-export.js', () => ({
   get: jest.fn(() => ({
     data: ['fda', 'fda'],
   })),

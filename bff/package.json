@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build:start": "npm run build:client && npm run start",
-    "start": "cd src/ && nodemon app.js",
     "build:client": "cd ../client/ && npm run build",
+    "start": "cd src/ && nodemon app-server.js",
     "test": "jest --detectOpenHandles"
   },
   "keywords": [],
