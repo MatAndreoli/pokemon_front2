@@ -19,7 +19,7 @@ describe('index-controller', () => {
       'should call method res.render',
     async () => {
       indexController.get(req, res);
-      expect(res.render).toHaveBeenCalled();
+      expect(res.render).toHaveBeenCalledWith("index", {"css": ["apple"], "js": ["banana", "some"]});
     }
   );
 });
