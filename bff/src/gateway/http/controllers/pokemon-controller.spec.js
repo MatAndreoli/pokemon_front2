@@ -1,7 +1,7 @@
-const pokemon_api = require('../../client/pokemon_api');
 const pokemonController = require('./pokemon-controller');
+const pokemon_api_uc = require('../../../usecases/pokemon_api_uc');
 
-jest.mock('../../client/pokemon_api', () => ({
+jest.mock('../../../usecases/pokemon_api_uc.js', () => ({
   getPokemonList: jest.fn(() => ['fda', 'fda']),
 }));
 
@@ -14,8 +14,8 @@ describe('pokemon-controller ', () => {
       await pokemonController.get(req, res);
     });
 
-    it('should call pokemon_api.getPokemonList', async () => {
-      expect(pokemon_api.getPokemonList).toHaveBeenCalled();
+    it('should call usecase pokemon_api_uc.getPokemonList', async () => {
+      expect(pokemon_api_uc.getPokemonList).toHaveReturnedWith(['fda', 'fda']);
     });
 
     it("should call res.send(['fda', 'fda'])", async () => {

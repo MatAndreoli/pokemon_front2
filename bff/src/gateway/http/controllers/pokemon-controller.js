@@ -1,6 +1,6 @@
-const pokemon = require('../../client/pokemon_api');
+const pokemon_api_uc = require('../../../usecases/pokemon_api_uc')
 
 exports.get = async (req, res) => {
-  const data = await pokemon.getPokemonList('http://localhost:8080/pokemons/');
+  const data = await pokemon_api_uc.getPokemonList();
   res.send(data);
 };
