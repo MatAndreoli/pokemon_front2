@@ -1,15 +1,5 @@
-const assets = require('../../../assets.json');
+const assetsBuilder = require('../builders/assets-builder');
 
-exports.get = (req, res) => {
-  const css = [];
-  const js = [];
-  for (let prop in assets) {
-    if (assets[prop].css) {
-      css.push(assets[prop].css);
-    }
-    if (assets[prop].js) {
-      js.push(assets[prop].js);
-    }
-  }
-  res.render('index', { css, js });
+exports.get = (_req, res) => {
+  res.render('index', assetsBuilder.buildAssets());
 };
