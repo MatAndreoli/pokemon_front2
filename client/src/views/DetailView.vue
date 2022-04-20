@@ -9,7 +9,7 @@
         <h3 class="title">Pokemon Types/Tipo</h3>
         <ul>
           <li
-            :class="liColorPicker(type)"
+            :class="type"
             v-for="type of getDetail.types"
             :key="type"
           >
@@ -55,25 +55,7 @@ export default {
     },
     goToHome() {
       this.$router.push({ name: "home" });
-    },
-    liColorPicker(type) {
-      switch (type) {
-        case "grass":
-          return "grass";
-        case "poison":
-          return "poison";
-        case "fire":
-          return "fire";
-        case "water":
-          return "water";
-        case "flying":
-          return "flying";
-        case "bug":
-          return "bug";
-        case "normal":
-          return "normal";
-      }
-    },
+    }
   },
   async created() {
     if (this.getList.length > 0) {
