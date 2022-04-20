@@ -1,6 +1,6 @@
-const assetsBuild = require('./assets-builder');
+const assetsBuild = require('../../../../src/gateway/http/builders/assets-builder');
 
-jest.mock('../../../assets.json', () => ({
+jest.mock('../../../../src/assets.json', () => ({
   app: {
     css: 'apple',
     js: 'banana',

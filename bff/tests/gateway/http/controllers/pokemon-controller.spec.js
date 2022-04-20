@@ -1,7 +1,7 @@
-const pokemonController = require('./pokemon-controller');
-const pokemon_api_uc = require('../../../usecases/pokemon_api_uc');
+const pokemonController = require('../../../../src/gateway/http/controllers/pokemon-controller.js');
+const pokemon_api_uc = require('../../../../src/usecases/pokemon_api_uc.js');
 
-jest.mock('../../../usecases/pokemon_api_uc.js', () => ({
+jest.mock('../../../../src/usecases/pokemon_api_uc.js', () => ({
   getPokemonList: jest.fn(() => ['fda', 'fda']),
 }));
 

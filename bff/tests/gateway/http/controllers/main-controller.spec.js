@@ -1,7 +1,7 @@
-const mainController = require('./main-controller');
-const assetsBuild = require('../builders/assets-builder');
+const mainController = require('../../../../src/gateway/http/controllers/main-controller');
+const assetsBuild = require('../../../../src/gateway/http/builders/assets-builder');
 
-jest.mock('../builders/assets-builder.js', () => ({
+jest.mock('../../../../src/gateway/http/builders/assets-builder', () => ({
   buildAssets: jest.fn(() => ({ css: ['apple'], js: ['banana', 'some'] })),
 }));
 
