@@ -4,6 +4,8 @@
 ```
 npm install
 ```
+
+### Scripts
 ### In the `root` directory
 **`npm run build:client`** to build the vue project in **`client/`** <br>
 **`npm run start:client`** to start the vue project in **`client/`** <br>
