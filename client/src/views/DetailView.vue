@@ -188,7 +188,10 @@ export default {
       background-color: rgb(0, 0, 0);
     }
     &.steel{
-        background: linear-gradient(120deg, rgb(124, 124, 124), rgb(201, 201, 201));
+      background: linear-gradient(120deg, rgb(124, 124, 124), rgb(201, 201, 201));
+    }
+    &.dragon{
+      background: linear-gradient(120deg, rgb(255, 0, 0), rgb(252, 113, 0), rgb(255, 175, 71));
     }
   }
 
