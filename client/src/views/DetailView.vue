@@ -160,6 +160,36 @@ export default {
     &.normal {
       background-color: rgb(65, 175, 107);
     }
+    &.ice {
+      background: linear-gradient(120deg, rgb(0, 68, 255), rgb(16, 207, 255), rgb(162, 227, 243));
+    }
+    &.ghost {
+      background: linear-gradient(120deg, rgb(95, 0, 90), rgb(168, 18, 255),rgb(212, 70, 255));
+    }
+    &.electric {
+      background: linear-gradient(120deg, rgb(248, 112, 0), rgb(253, 207, 0));
+    }
+    &.rock {
+      background: linear-gradient(120deg, rgb(66, 66, 66), rgb(180, 180, 180));
+    }
+    &.fighting {
+      background-color: rgb(160, 160, 160);
+    }
+    &.ground {
+      background: linear-gradient(120deg, rgb(112, 54, 0), rgb(180, 87, 0));
+    }
+    &.psychic {
+      background: linear-gradient(120deg, rgb(84, 0, 133), rgb(136, 32, 255));
+    }
+    &.fairy {
+      background: linear-gradient(120deg, rgb(189, 30, 238), rgb(253, 24, 177));
+    }
+    &.dark {
+      background-color: rgb(0, 0, 0);
+    }
+    &.steel{
+        background: linear-gradient(120deg, rgb(124, 124, 124), rgb(201, 201, 201));
+    }
   }
 
   img {
