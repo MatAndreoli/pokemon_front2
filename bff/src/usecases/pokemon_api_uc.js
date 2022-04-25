@@ -1,9 +1,8 @@
 const pokemon_api = require('../gateway/client/pokemon_api');
 
 const pokemon_api_uc = {
-  getPokemonList: async () => {
-    const data = await pokemon_api.getPokemonList();
-    return data;
+  getPokemonList: async (limit) => {
+    return await pokemon_api.getPokemonList(limit);
   },
 };
 

@@ -8,11 +8,7 @@
       <div class="detail">
         <h3 class="title">Pokemon Types/Tipo</h3>
         <ul>
-          <li
-            :class="type"
-            v-for="type of getDetail.types"
-            :key="type"
-          >
+          <li :class="type" v-for="type of getDetail.types" :key="type">
             {{ camelCase(type) }}
           </li>
         </ul>
@@ -38,15 +34,15 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import pokemon from '../gateways/pokemon_api'
+import pokemon from "../gateways/pokemon_api";
 
 export default {
   name: "DetailView",
   computed: {
-    ...mapGetters(["getDetail", "getList"]),
+    ...mapGetters(["getDetail", "getList", "getLimit"]),
   },
   methods: {
-    ...mapActions(['setPokemonList', 'setDetail']),
+    ...mapActions(["setPokemonList", "setDetail"]),
     camelCase(str) {
       return str
         .split(" ")
@@ -54,14 +50,14 @@ export default {
         .join("");
     },
     goToHome() {
-      this.$router.push({ name: "home" });
-    }
+      this.$router.push({ name: "home", params: { limit: this.getLimit } });
+    },
   },
   async created() {
     if (this.getList.length > 0) {
       return;
     }
-    const list = await pokemon.getPokemonList();
+    const list = await pokemon.getPokemonList(this.getLimit);
     await this.setPokemonList(list);
     setTimeout(async () => {
       await this.setDetail(this.$route.params.id);

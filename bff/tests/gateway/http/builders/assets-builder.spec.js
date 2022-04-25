@@ -10,7 +10,7 @@ jest.mock('../../../../src/assets.json', () => ({
 }));
 
 describe('assets-builder', () => {
-  it('when method buildAssets is called should return an object with two arrays: { css, js }', () => {
+  it('when method buildAssets is called should return an object with two arrays: { css: [], js: [] }', () => {
     const result = assetsBuild.buildAssets();
     expect(result).toEqual({
       css: ['apple'],

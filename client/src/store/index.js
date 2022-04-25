@@ -6,11 +6,13 @@ Vue.use(Vuex);
 const state = {
   list: [],
   detail: {},
+  limit: 0
 };
 
 const getters = {
   getList: (_state) => _state.list,
   getDetail: (_state) => _state.detail,
+  getLimit: (_state) => _state.limit,
 };
 
 const mutations = {
@@ -23,6 +25,9 @@ const mutations = {
       _state.detail = pokemonDetail;
     }
   },
+  ADD_LIMIT(_state, payload) {
+    _state.limit = payload;
+  },
 };
 
 const actions = {
@@ -31,6 +36,9 @@ const actions = {
   },
   async setDetail({ commit }, payload) {
     commit('ADD_TO_DETAIL', payload);
+  },
+  async setLimit({ commit }, payload) {
+    commit('ADD_LIMIT', payload);
   },
 };
 

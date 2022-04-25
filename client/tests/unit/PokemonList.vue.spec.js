@@ -18,39 +18,45 @@ const factory = (store, localVue) =>
       $router: {
         push: jest.fn(),
       },
+      $route: {
+        params: { limit: 1 },
+      },
     },
   });
 
-const gettersWithData = {
-  getList: () => [
-    {
-      abilities: ['overgrow', 'chlorophyll'],
-      front_default:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-      id: 1,
-      name: 'bulbasaur',
-      types: ['grass', 'poison'],
-    },
-    {
-      abilities: ['overgrow', 'chlorophyll'],
-      front_default:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
-      id: 2,
-      name: 'ivysaur',
-      types: ['grass', 'poison'],
-    },
-  ],
-};
+const gettersWithData = () => [
+  {
+    abilities: ['overgrow', 'chlorophyll'],
+    front_default:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+    id: 1,
+    name: 'bulbasaur',
+    types: ['grass', 'poison'],
+  },
+  {
+    abilities: ['overgrow', 'chlorophyll'],
+    front_default:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
+    id: 2,
+    name: 'ivysaur',
+    types: ['grass', 'poison'],
+  },
+];
 
-const gettersEmpty = {
-  getList: () => [],
-};
+const gettersEmpty = () => [];
 
-const actions = { setPokemonList: jest.fn(), setDetail: jest.fn() };
+const actions = {
+  setPokemonList: jest.fn(),
+  setDetail: jest.fn(),
+  setLimit: jest.fn(),
+};
 
 const store = (option) =>
   new Vuex.Store({
-    getters: option ? gettersEmpty : gettersWithData,
+    getters: {
+      getList: option ? gettersEmpty : gettersWithData,
+      getLimit: jest.fn(() => 1),
+    },
     actions,
   });
 
@@ -91,12 +97,16 @@ describe('PokemonList', () => {
 
       it('then should not call setPokemonList', () => {
         expect(actions.setPokemonList).not.toHaveBeenCalled();
-      }); 
+      });
     });
 
     describe('and getList is empty', () => {
       beforeEach(async () => {
         wrapper = factory(store(true), localVue);
+      });
+
+      it('then should call setLimit', async () => {
+        expect(actions.setLimit.mock.calls[0][1]).toEqual(1);
       });
 
       it('then should call getPokemonList', async () => {

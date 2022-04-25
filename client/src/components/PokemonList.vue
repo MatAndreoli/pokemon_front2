@@ -19,10 +19,10 @@ export default {
   components: { PokemonItem },
   name: "PokemonList",
   computed: {
-    ...mapGetters(["getList"]),
+    ...mapGetters(["getList", "getLimit"]),
   },
   methods: {
-    ...mapActions(['setPokemonList', 'setDetail']),
+    ...mapActions(['setPokemonList', 'setDetail', 'setLimit']),
     goToDetail(id) {
       this.setDetail(id);
       this.$router.push({ name: "detailView", params: { id } });
@@ -32,11 +32,12 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    const list = await pokemon.getPokemonList();
+    await this.setLimit(this.$route.params.limit)
+    const list = await pokemon.getPokemonList(this.getLimit);
     await this.setPokemonList(list);
   },
 };
-</script>
+</script> 
 
 <style lang="scss" scoped>
 .pokemon-list {

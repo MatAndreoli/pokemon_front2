@@ -1,6 +1,6 @@
-const pokemon_api_uc = require('../../../usecases/pokemon_api_uc')
+const pokemon_api_uc = require('../../../usecases/pokemon_api_uc');
 
-exports.get = async (_req, res) => {
-  const data = await pokemon_api_uc.getPokemonList();
+exports.get = async (req, res) => {
+  const data = await pokemon_api_uc.getPokemonList(req.params.limit);
   res.send(data);
 };

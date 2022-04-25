@@ -49,6 +49,7 @@ const store = (option) =>
     getters: {
       getList: option ? gettersEmpty : gettersWithData,
       getDetail: jest.fn(),
+      getLimit: jest.fn(() => 1),
     },
     actions,
   });
@@ -108,7 +109,10 @@ describe('DetailView', () => {
     });
 
     it('then should call $router.push with expected param', () => {
-      expect(wrapper.vm.$router.push).toHaveBeenCalledWith({ name: 'home' });
+      expect(wrapper.vm.$router.push).toHaveBeenCalledWith({
+        name: 'home',
+        params: { limit: 1 },
+      });
     });
   });
 });

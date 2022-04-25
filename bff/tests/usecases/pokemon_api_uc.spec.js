@@ -16,7 +16,7 @@ describe('pokemon_api_uc ', () => {
       expect(pokemon_api.getPokemonList).toHaveReturnedWith(['fda', 'fda']);
     });
 
-    it('then it should return an array', async () => {
+    it('then should return an array', async () => {
       expect(ucResult).toEqual(['fda', 'fda']);
     });
   });

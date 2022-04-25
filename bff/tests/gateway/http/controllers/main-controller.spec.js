@@ -6,29 +6,24 @@ jest.mock('../../../../src/gateway/http/builders/assets-builder', () => ({
 }));
 
 describe('main-controller', () => {
-  beforeEach(() => {
-    mainController.get(req, res);
-  });
   const req = jest.fn();
   const res = {
     render: jest.fn(),
   };
-  it(
-    'when method GET from the controller is called ' +
-      'should call method assetsBuild.buildAssets',
-    () => {
+  describe('when method GET from the controller is called', () => {
+    beforeEach(() => {
+      mainController.get(req, res);
+    });
+
+    it('should call method assetsBuild.buildAssets', () => {
       expect(assetsBuild.buildAssets).toHaveBeenCalled();
-    }
-  );
-  
-  it(
-    'when method GET from the controller is called ' +
-      'should call method res.render',
-    () => {
+    });
+
+    it('should call method res.render with expected params', () => {
       expect(res.render).toHaveBeenCalledWith('index', {
         css: ['apple'],
         js: ['banana', 'some'],
       });
-    }
-  );
+    });
+  });
 });
