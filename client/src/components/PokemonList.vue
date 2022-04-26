@@ -32,9 +32,9 @@ export default {
     if (this.getList.length > 0) {
       return;
     }
-    await this.setLimit(this.$route.params.limit)
+    this.setLimit(this.$route.params.limit)
     const list = await pokemon.getPokemonList(this.getLimit);
-    await this.setPokemonList(list);
+    this.setPokemonList(list);
   },
 };
 </script> 

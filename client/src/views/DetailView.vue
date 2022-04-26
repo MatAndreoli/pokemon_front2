@@ -58,9 +58,9 @@ export default {
       return;
     }
     const list = await pokemon.getPokemonList(this.getLimit);
-    await this.setPokemonList(list);
-    setTimeout(async () => {
-      await this.setDetail(this.$route.params.id);
+    this.setPokemonList(list);
+    setTimeout(() => {
+      this.setDetail(this.$route.params.id);
     }, 2000);
   },
 };

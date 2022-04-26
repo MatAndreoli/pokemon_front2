@@ -31,13 +31,13 @@ const mutations = {
 };
 
 const actions = {
-  async setPokemonList({ commit }, payload) {
+  setPokemonList({ commit }, payload) {
     commit('ADD_TO_LIST', payload);
   },
-  async setDetail({ commit }, payload) {
+  setDetail({ commit }, payload) {
     commit('ADD_TO_DETAIL', payload);
   },
-  async setLimit({ commit }, payload) {
+  setLimit({ commit }, payload) {
     commit('ADD_LIMIT', payload);
   },
 };

@@ -12,6 +12,10 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/',
+    redirect: '/0',
+  },
+  {
     path: '/details/:id',
     name: 'detailView',
     component: DetailView,

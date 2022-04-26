@@ -6,8 +6,8 @@ jest.mock('@/http/index', () => ({
 }));
 
 describe('when method getPokemonList() is called', () => {
-  beforeEach(async () => {
-    await pokemon.getPokemonList();
+  beforeEach(() => {
+    pokemon.getPokemonList();
   });
 
   it('then should call http.get', () => {

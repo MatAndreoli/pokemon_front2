@@ -101,19 +101,19 @@ describe('PokemonList', () => {
     });
 
     describe('and getList is empty', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         wrapper = factory(store(true), localVue);
       });
 
-      it('then should call setLimit', async () => {
+      it('then should call setLimit', () => {
         expect(actions.setLimit.mock.calls[0][1]).toEqual(1);
       });
 
-      it('then should call getPokemonList', async () => {
+      it('then should call getPokemonList', () => {
         expect(pokemon.getPokemonList).toHaveBeenCalled();
       });
 
-      it('then should call setPokemonList with the expected param', async () => {
+      it('then should call setPokemonList with the expected param', () => {
         expect(actions.setPokemonList.mock.calls[0][1]).toEqual([]);
       });
     });

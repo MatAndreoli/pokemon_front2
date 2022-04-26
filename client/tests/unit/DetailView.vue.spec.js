@@ -77,13 +77,13 @@ describe('DetailView', () => {
         expect(actions.setPokemonList).not.toHaveBeenCalled();
       });
 
-      it('then should not call setTimeout', async () => {
+      it('then should not call setTimeout', () => {
         expect(setTimeout).not.toHaveBeenCalled();
       });
     });
 
     describe('and getList has no data', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         wrapper = factory(store(true), localVue);
       });
 
@@ -96,7 +96,7 @@ describe('DetailView', () => {
         expect(actions.setPokemonList.mock.calls[0][1]).toEqual([]);
       });
 
-      it('then should call setTimeout with body and time', async () => {
+      it('then should call setTimeout with body and time', () => {
         expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 2000);
       });
     });
