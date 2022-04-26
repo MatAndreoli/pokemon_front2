@@ -9,7 +9,9 @@ describe('main-controller', () => {
   const req = jest.fn();
   const res = {
     render: jest.fn(),
+    redirect: jest.fn(),
   };
+
   describe('when method GET from the controller is called', () => {
     beforeEach(() => {
       mainController.get(req, res);
@@ -24,6 +26,16 @@ describe('main-controller', () => {
         css: ['apple'],
         js: ['banana', 'some'],
       });
+    });
+  });
+
+  describe('when method redirectTo from the controller is called', () => {
+    beforeEach(() => {
+      mainController.redirectTo(req, res);
+    });
+
+    it('should call method redirect', () => {
+      expect(res.redirect).toHaveBeenCalledWith('/0');
     });
   });
 });

@@ -2,7 +2,8 @@ const http = require('./axios-export');
 
 const pokemon = {
   getPokemonList: async (limit) => {
-    const { data } = await http.get("/" + ((limit >= 0 && limit != undefined) ? limit : 0));
+    const validLimit = (limit >= 0) ? limit : 0;
+    const { data } = await http.get("/" + validLimit);
     return data;
   },
 };
