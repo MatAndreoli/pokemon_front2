@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import pokemon from '@/gateways/pokemon_api';
 
 jest.mock('@/gateways/pokemon_api', () => ({
-  getPokemonList: jest.fn(),
+  getPokemonList: jest.fn(() => []),
 }));
 
 const localVue = createLocalVue();
@@ -21,7 +21,7 @@ const factory = (store, localVue) =>
     },
   });
 
-const gettersWithData = () => [
+const getListWithData = () => [
   {
     abilities: ['overgrow', 'chlorophyll'],
     front_default:
@@ -40,15 +40,26 @@ const gettersWithData = () => [
   },
 ];
 
-const gettersEmpty = () => [];
+const getListEmpty = () => [];
+
+const getDetailWithData = () => ({
+  abilities: ['overgrow', 'chlorophyll'],
+  front_default:
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+  id: 1,
+  name: 'bulbasaur',
+  types: ['grass', 'poison'],
+});
+
+const getDetailEmpty = () => {};
 
 const actions = { setPokemonList: jest.fn(), setDetail: jest.fn() };
 
-const store = (option) =>
+const store = (getList=false, getDetail=false) =>
   new Vuex.Store({
     getters: {
-      getList: option ? gettersEmpty : gettersWithData,
-      getDetail: jest.fn(),
+      getList: getList ? getListEmpty : getListWithData,
+      getDetail: getDetail ? getDetailEmpty : getDetailWithData,
       getLimit: jest.fn(() => 1),
     },
     actions,
@@ -57,6 +68,28 @@ const store = (option) =>
 describe('DetailView', () => {
   let wrapper;
 
+  describe('when component is rendered', () => {
+    describe('and getDetail is empty', () => {
+      beforeEach(() => {
+        wrapper = factory(store(false, true), localVue);
+      });
+      it('then should not render .card', () => {
+        const card = wrapper.find('.card').element;
+        expect(card).not.toBeTruthy();
+      });
+    });
+
+    describe('and getDetail is not empty', () => {
+      beforeEach(() => {
+        wrapper = factory(store(false, false), localVue);
+      });
+      it('then should render .card', () => {
+        const card = wrapper.find('.card').element;
+        expect(card).toBeTruthy();
+      });
+    });
+  });
+
   describe('when method created is called', () => {
     beforeEach(() => {
       pokemon.getPokemonList = jest.fn(() => []);
@@ -64,7 +97,7 @@ describe('DetailView', () => {
 
     describe('and getList has data', () => {
       beforeEach(() => {
-        wrapper = factory(store, localVue);
+        wrapper = factory(store(false), localVue);
         jest.useFakeTimers();
         jest.spyOn(global, 'setTimeout');
       });
