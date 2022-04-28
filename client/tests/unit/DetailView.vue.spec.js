@@ -90,6 +90,8 @@ describe('DetailView', () => {
     describe('and getList has no data', () => {
       beforeEach(() => {
         wrapper = factory(store(true), localVue);
+        jest.useFakeTimers();
+        jest.spyOn(global, 'setTimeout');
       });
 
       it('then should call getPokemonList', () => {

@@ -71,6 +71,15 @@
   "jest": {
     "verbose": true,
     "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**/*.js",
+      "**/src/**/*.vue",
+      "!**/src/*.js",
+      "!**/node_modules/**",
+      "!**/tests/**/*.js",
+      "!**/src/router/*.js",
+      "!**/src/store/*.js"
+    ],
     "preset": "@vue/cli-plugin-unit-jest",
     "globals": {
       "vue-jest": {
