@@ -24,6 +24,15 @@
   },
   "jest": {
     "verbose": true,
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**/*.js",
+      "!**/src/*.js",
+      "!**/src/*.json",
+      "!**/src/**/routes/*.js",
+      "!**/src/**/client/axios-export.js",
+      "!**/node_modules/**",
+      "!**/tests/**/*.js"
+    ]
   }
 }
