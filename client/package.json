@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve --port 8082",
     "prebuild": "rm -rf ../bff/public && rm -rf ../bff/src/assets.json",
     "build": "vue-cli-service build --dest ../bff/public",
-    "test:unit": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

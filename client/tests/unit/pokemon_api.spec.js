@@ -13,5 +13,4 @@ describe('when method getPokemonList() is called', () => {
   it('then should call http.get', () => {
     expect(http.get).toHaveBeenCalled();
   });
-
 });

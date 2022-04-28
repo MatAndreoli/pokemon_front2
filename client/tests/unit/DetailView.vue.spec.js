@@ -69,6 +69,11 @@ describe('DetailView', () => {
         jest.spyOn(global, 'setTimeout');
       });
 
+      it('then should call method camelCase', () => {
+        let camelCaseStr = wrapper.vm.camelCase('text');
+        expect(camelCaseStr).toEqual('Text');
+      });
+
       it('then should not call getPokemonList', () => {
         expect(pokemon.getPokemonList).not.toHaveBeenCalled();
       });
@@ -92,7 +97,6 @@ describe('DetailView', () => {
       });
 
       it('then should call setPokemonList with expected param', () => {
-        expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 2000);
         expect(actions.setPokemonList.mock.calls[0][1]).toEqual([]);
       });
 
