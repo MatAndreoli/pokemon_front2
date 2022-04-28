@@ -1,8 +1,9 @@
 .DS_Store
-node_modules
-/dist
-coverage
-public
+node_modules/
+dist/
+coverage/
+public/
+reports/
 
 # local env files
 .env.local
