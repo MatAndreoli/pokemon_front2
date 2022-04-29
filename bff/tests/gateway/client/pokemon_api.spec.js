@@ -11,13 +11,14 @@ jest.mock('../../../src/gateway/client/axios-export', () => ({
 
 describe('pokemon_api', () => {
   let apiResult;
+
   describe('when method getPokemonList(valid) is called', () => {
     beforeAll(async () => {
       apiResult = await pokemon.getPokemonList(1);
     });
 
     it('then http.get should have been called with expected params', () => {
-      expect(http.get).toHaveBeenCalledWith("/1");
+      expect(http.get).toHaveBeenCalledWith('/1');
     });
 
     it('then http.get should return an object with a lot of properties', () => {
@@ -42,13 +43,19 @@ describe('pokemon_api', () => {
     });
   });
 
-  describe('when method getPokemonList(invalid) is called', () => {
-    beforeEach(async () => {
-      apiResult = await pokemon.getPokemonList("fdaf");
+  describe('when method getPokemonList is called', () => {
+    describe('with string', () => {
+      it('then http.get should have been called with "/0"', async () => {
+        apiResult = await pokemon.getPokemonList('fdaf');
+        expect(http.get).toHaveBeenCalledWith('/0');
+      });
     });
 
-    it('then http.get should have been called with "/0"', () => {
-      expect(http.get).toHaveBeenCalledWith("/0");
+    describe('with numbers less than 1', () => {
+      it('then http.get should have been called with "/0"', async () => {
+        apiResult = await pokemon.getPokemonList(0);
+        expect(http.get).toHaveBeenCalledWith('/0');
+      });
     });
   });
 });
