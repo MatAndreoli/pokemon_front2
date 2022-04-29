@@ -6,8 +6,10 @@ const localVue = createLocalVue();
 localVue.use(VueRouter);
 
 describe('App', () => {
-  it('App component should exist', () => {
-    shallowMount(App, { localVue });
-    expect(App.name).toBe('App');
+  describe('given that the component is started', () => {
+    it('then should validate name', () => {
+      shallowMount(App, { localVue });
+      expect(App.name).toBe('App');
+    });
   });
 });

@@ -11,6 +11,8 @@ npm install
 **`npm run start:client`** to start the vue project in **`client/`** <br>
 **`npm run start:bff`** to start the server in **`bff/`** <br>
 **`npm run test:all`** to run all the tests(**`bff/`** and **`client/`**) <br>
+**`npm run i:all`** to install bff/ and client/ modules/dependencies <br>
+**`npm run stryker:client`** to run the stryker in the client/ <br>
 
 ### In the `bff/` directory
 **`npm run build:start`** to build the vue project in **`client/`** and start the server <br>
@@ -24,3 +26,4 @@ npm install
 **`npm run build`** to build the vue project and put what was generated in **`bff/public`** <br>
 **`npm run test`** to run the tests <br>
 **`npm run lint`** to run the lint <br>
+**`npm run stryker`** to run the stryker <br>

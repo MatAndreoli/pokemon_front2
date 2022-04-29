@@ -22,13 +22,9 @@ export default {
   },
   methods: {
     camelCase(str) {
-      return str
-        .split(" ")
-        .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
-        .join("");
+      return str.charAt(0).toUpperCase() + str.slice(1);
     },
   },
-  emits: ["pokemonEvent"],
 };
 </script>
 
