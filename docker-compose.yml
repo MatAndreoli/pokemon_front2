@@ -1,0 +1,17 @@
+version: '3'
+services:
+  bff:
+    image: bff_pokemon
+    container_name: bff
+    ports:
+      - '3000:3000'
+    depends_on:
+      - back
+    volumes:
+      - ./bff:/usr/app
+
+  back:
+    image: pokemon-api
+    container_name: back
+    ports:
+      - '8080:8080'

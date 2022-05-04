@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -17,4 +18,6 @@ const pokemonRoute = require('./gateway/http/routes/pokemon-router');
 app.use('/', indexRoute);
 app.use('/pokemons', cors(), pokemonRoute);
 
-app.listen(3000);
+app.listen(process.env.SERVER_PORT, () =>{
+    console.log(`Server running on ${process.env.LOCAL}:${process.env.SERVER_PORT}`)
+});
