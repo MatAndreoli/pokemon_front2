@@ -11,7 +11,7 @@ services:
       - ./bff:/usr/app
 
   back:
-    image: pokemon-api
+    image: matandreoli/pokemon-api:1.0
     container_name: back
     ports:
       - '8080:8080'
