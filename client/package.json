@@ -6,9 +6,11 @@
     "serve": "vue-cli-service serve --port 8082",
     "prebuild": "rm -rf ../bff/public && rm -rf ../bff/src/assets.json",
     "build": "vue-cli-service build --dest ../bff/public",
+    "build:dev": "vue-cli-service build --mode development --dest ../bff/public",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "stryker": "npx stryker run"
+    "stryker": "npx stryker run",
+    "test:stryker": "npm t && npx stryker run"
   },
   "dependencies": {
     "axios": "^0.26.1",
