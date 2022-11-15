@@ -1,4 +1,9 @@
-node_modules
-coverage
-reports
-tests
+node_modules/
+coverage/
+reports/
+tests/
+docker-compose.yml
+README.md
+tests/
+coverage/
+reports/

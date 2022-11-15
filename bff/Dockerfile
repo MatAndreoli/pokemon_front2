@@ -1,13 +1,14 @@
-FROM node:alpine
+FROM node:16.18.0-alpine
 
 WORKDIR /usr/app
 
-ENV NODE_ENV=prod
-
-COPY package*.json ./
+COPY bff/package*.json ./
 RUN npm i
 
-COPY . .
+COPY bff/ ./
+
+RUN npm run clean
+
 EXPOSE 3000
 
 CMD [ "npm", "start" ]

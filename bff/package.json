@@ -11,7 +11,8 @@
     "start": "cd src/ && nodemon app-server.js",
     "test": "jest --detectOpenHandles",
     "stryker": "npx stryker run",
-    "test:stryker": "npm t && npx stryker run"
+    "test:stryker": "npm t && npx stryker run",
+    "clean": "./clean.sh"
   },
   "keywords": [],
   "author": "",
